@@ -4,6 +4,7 @@ This custom image contains:
 
 - [nginx-http-auth-digest](https://github.com/atomx/nginx-http-auth-digest)
 - [ngx_http_substitutions_filter_module](https://github.com/yaoweibin/ngx_http_substitutions_filter_module)
+- [ngx-postgres](https://github.com/openresty/ngx_postgres)
 - [nginx-opentracing](https://github.com/opentracing-contrib/nginx-opentracing)
 - [opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
 - [zipkin-cpp-opentracing](https://github.com/rnburn/zipkin-cpp-opentracing)
@@ -11,6 +12,7 @@ This custom image contains:
 - [ModSecurity-nginx](https://github.com/SpiderLabs/ModSecurity-nginx) (only supported in x86_64)
 - [brotli](https://github.com/google/brotli)
 - [geoip2](https://github.com/leev/ngx_http_geoip2_module)
+- [rabbitmqstomp]( https://github.com/wingify/lua-resty-rabbitmqstomp)
 
 **How to use this image:**
 This image provides a default configuration file with no backend servers.

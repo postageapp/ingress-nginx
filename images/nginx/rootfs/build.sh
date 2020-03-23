@@ -49,6 +49,8 @@ export LUA_RESTY_BALANCER=0.03
 export LUA_RESTY_CORE=0.1.17
 export LUA_CJSON_VERSION=2.1.0.7
 export LUA_RESTY_COOKIE_VERSION=766ad8c15e498850ac77f5e0265f1d3f30dc4027
+export LUA_RESTY_RABBITMQSTOMP=0.1
+export NGINX_POSTGRES_VERSION=1.0
 
 export BUILD_PATH=/tmp/build
 
@@ -108,7 +110,8 @@ apk add \
   bc \
   unzip \
   dos2unix mercurial \
-  yaml-cpp
+  yaml-cpp \
+  postgresql-dev
 
 mkdir -p /etc/nginx
 
@@ -215,6 +218,15 @@ get_src 59d2f18ecadba48be61061004c8664eaed1111a3372cd2567cb24c5a47eb41fe \
 
 get_src f818b5cef0881e5987606f2acda0e491531a0cb0c126d8dca02e2343edf641ef \
         "https://github.com/cloudflare/lua-resty-cookie/archive/$LUA_RESTY_COOKIE_VERSION.tar.gz"
+
+# RabbitMQ STOMP
+
+get_src b176ff2095cd622141b4d9f9e82caa6beba95da12bcfcb5a0b4971026fab710c \
+        "https://github.com/wingify/lua-resty-rabbitmqstomp/archive/v$LUA_RESTY_RABBITMQSTOMP.tar.gz"
+
+# PostgreSQL
+get_src 62c9e970a474be4b343b1186fa2c3e6c575e07ff17a3fb9df335f90bc6301472 \
+        "https://github.com/openresty/ngx_postgres/archive/$NGINX_POSTGRES_VERSION.tar.gz"
 
 # improve compilation times
 CORES=$(($(grep -c ^processor /proc/cpuinfo) - 0))
@@ -503,7 +515,8 @@ WITH_MODULES="--add-module=$BUILD_PATH/ngx_devel_kit-$NDK_VERSION \
   --add-dynamic-module=$BUILD_PATH/ModSecurity-nginx-$MODSECURITY_VERSION \
   --add-dynamic-module=$BUILD_PATH/ngx_http_geoip2_module-${GEOIP2_VERSION} \
   --add-module=$BUILD_PATH/nginx_ajp_module-${NGINX_AJP_VERSION} \
-  --add-module=$BUILD_PATH/ngx_brotli"
+  --add-module=$BUILD_PATH/ngx_brotli \
+  --add-module=$BUILD_PATH/ngx_postgres-$NGINX_POSTGRES_VERSION"
 
 ./configure \
   --prefix=/usr/local/nginx \
@@ -561,6 +574,11 @@ make all
 make install
 
 cd "$BUILD_PATH/lua-resty-cookie-$LUA_RESTY_COOKIE_VERSION"
+make all
+make install
+
+# RabbitMQStomp
+cd "$BUILD_PATH/lua-resty-rabbitmqstomp-$LUA_RESTY_RABBITMQSTOMP"
 make all
 make install
 
