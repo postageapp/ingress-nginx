@@ -30,6 +30,8 @@ function source_tfvars() {
   )"
 }
 
+echo "this is the right one"
+
 source_tfvars /tmp/env
 
 export DEBIAN_FRONTEND=noninteractive
@@ -65,7 +67,7 @@ apt -q=3 install docker-ce --yes
 
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
-echo ${docker_password} | docker login -u ${docker_username} --password-stdin docker.pkg.github.com
+echo ${docker_password} | docker login docker.pkg.github.com -u ${docker_username} --password-stdin
 
 curl -sL -o /usr/local/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
 chmod +x /usr/local/bin/gimme
