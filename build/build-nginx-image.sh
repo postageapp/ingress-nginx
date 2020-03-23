@@ -45,7 +45,7 @@ docker buildx build \
   --platform linux/amd64 \
   --tag build-nginx-terraform $DIR/images/nginx
 
-# build nginx and publish docker images to quay.io.
+# build nginx and publish docker images to github packages.
 # this can take up to two hours.
 docker run --rm -it \
   --volume $DIR/images/nginx:/tf \
