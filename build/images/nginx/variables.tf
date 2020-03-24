@@ -17,6 +17,9 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "github_token" {
+}
+
 variable "cidr_vpc" {
   description = "CIDR block for the VPC"
   default     = "10.4.0.0/16"
