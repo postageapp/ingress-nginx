@@ -67,14 +67,14 @@ apt -q=3 install docker-ce --yes
 
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
-echo ${docker_password} | docker login docker.pkg.github.com -u ${docker_username} --password-stdin
+echo ${github_token} | docker login docker.pkg.github.com -u ${docker_username} --password-stdin
 
 curl -sL -o /usr/local/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
 chmod +x /usr/local/bin/gimme
 
 eval "$(gimme 1.14)"
 
-git clone -b github-packages https://github.com/postageapp/ingress-nginx
+git clone https://github.com/postageapp/ingress-nginx
 
 cd ingress-nginx/images/nginx
 
