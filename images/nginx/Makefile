@@ -18,13 +18,13 @@
 SHELL=/bin/bash -o pipefail
 
 # 0.0.0 shouldn't clobber any released builds
-TAG ?= 0.99c
+TAG ?= 0.99
 REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
 
 IMGNAME = nginx
 IMAGE = $(REGISTRY)/$(IMGNAME)
 
-PLATFORMS = amd64 arm arm64
+PLATFORMS = linux/amd64 linux/arm64
 
 EMPTY :=
 SPACE := $(EMPTY) $(EMPTY)
@@ -48,7 +48,7 @@ container:
 .PHONY: push
 push: container
 	$(foreach PLATFORM,$(PLATFORMS), \
-		docker push $(IMAGE)-$(PLATFORM):$(TAG);)
+		docker push $(IMAGE)-$(PLATFORM)-$(TAG);)
 
 .PHONY: release
 release: push

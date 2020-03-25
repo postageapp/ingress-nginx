@@ -13,9 +13,9 @@
 # limitations under the License.
 
 TAG ?=v$(shell date +%m%d%Y)-$(shell git rev-parse --short HEAD)
-REGISTRY ?= quay.io/kubernetes-ingress-controller
+REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
 
-IMAGE = $(REGISTRY)/e2e
+IMAGE = $(REGISTRY)/amd64-e2e-0.99c
 
 all: docker-build docker-push
 

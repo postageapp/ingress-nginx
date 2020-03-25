@@ -34,7 +34,7 @@ function cleanup {
 }
 trap cleanup EXIT
 
-E2E_IMAGE=quay.io/kubernetes-ingress-controller/e2e:v03062020-7b6e2dd31
+E2E_IMAGE=docker.pkg.github.com/postageapp/ingress-nginx/nginx-amd64:0.99c
 
 DOCKER_OPTS=${DOCKER_OPTS:-}
 

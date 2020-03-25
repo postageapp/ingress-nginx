@@ -90,7 +90,6 @@ export DIND_TASKS=0
 
 echo "Building NGINX image..."
 ARCH=amd64 make build container push
-ARCH=arm   make build container push
 ARCH=arm64 make build container push
 
 # Requires https://github.com/kubernetes/ingress-nginx/pull/4271

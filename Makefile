@@ -27,7 +27,7 @@ endif
 SHELL=/bin/bash -o pipefail -o errexit
 
 # Use the 0.0 tag for testing, it shouldn't clobber any release builds
-TAG ?= 0.30.0
+TAG ?= 0.30.0c
 
 # Use docker to run makefile tasks
 USE_DOCKER ?= true
@@ -61,10 +61,10 @@ ifeq ($(ARCH),)
     $(error mandatory variable ARCH is empty, either set it when calling the command or make sure 'go env GOARCH' works)
 endif
 
-REGISTRY ?= quay.io/kubernetes-ingress-controller
+REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
 
-BASE_IMAGE ?= quay.io/kubernetes-ingress-controller/nginx
-BASE_TAG ?= 7b6e2dd312f1808e43fb39992ea814035557c7f3
+BASE_IMAGE ?= docker.pkg.github.com/postageapp/ingress-nginx/nginx-amd64
+BASE_TAG ?= 0.99c
 
 GOARCH=$(ARCH)
 GOBUILD_FLAGS := -v
@@ -109,14 +109,14 @@ container: clean-container .container-$(ARCH) ## Build image for a particular ar
 		--no-cache \
 		--progress plain \
 		--platform linux/$(ARCH) \
-		--build-arg BASE_IMAGE="$(BASE_IMAGE)-$(ARCH):$(BASE_TAG)" \
+		--build-arg BASE_IMAGE="$(BASE_IMAGE):$(BASE_TAG)" \
 		--build-arg VERSION="$(TAG)" \
 		-t $(REGISTRY)/nginx-ingress-controller-${ARCH}:$(TAG) $(TEMP_DIR)/rootfs
 
 .PHONY: clean-container
 clean-container: ## Removes local image
-	echo "removing old image $(BASE_IMAGE)-$(ARCH):$(TAG)"
-	@docker rmi -f $(BASE_IMAGE)-$(ARCH):$(TAG) || true
+	echo "removing old image $(BASE_IMAGE):$(TAG)"
+	@docker rmi -f $(BASE_IMAGE):$(TAG) || true
 
 .PHONY: push
 push: .push-$(ARCH) ## Publish image for a particular arch.
