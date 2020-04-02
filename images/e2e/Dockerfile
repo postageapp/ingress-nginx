@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM docker.pkg.github.com/postageapp/ingress-nginx/nginx-amd64:0.99c
+FROM sinceqq/nginx-amd64:0.99c
 
 ARG GOLANG_VERSION
 ARG GOLANG_SHA
@@ -43,7 +43,8 @@ RUN apk add --no-cache \
   python \
   py-crcmod \
   py-pip \
-  openssl
+  openssl \
+  postgresql-dev
 
 RUN set -eux; \
   apk add --no-cache --virtual .build-deps \

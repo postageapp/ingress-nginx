@@ -34,7 +34,7 @@ function cleanup {
 }
 trap cleanup EXIT
 
-E2E_IMAGE=docker.pkg.github.com/postageapp/ingress-nginx/nginx-amd64:0.99c
+E2E_IMAGE=sinceqq/nginx-amd64-e2e:v03252020-e8851e640
 
 DOCKER_OPTS=${DOCKER_OPTS:-}
 

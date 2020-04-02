@@ -50,6 +50,7 @@ export LUA_RESTY_CORE=0.1.17
 export LUA_CJSON_VERSION=2.1.0.7
 export LUA_RESTY_COOKIE_VERSION=766ad8c15e498850ac77f5e0265f1d3f30dc4027
 export LUA_RESTY_RABBITMQSTOMP=0.1
+export NGINX_STOMP_VERSION=master
 export NGINX_POSTGRES_VERSION=1.0
 
 export BUILD_PATH=/tmp/build
@@ -227,6 +228,10 @@ get_src b176ff2095cd622141b4d9f9e82caa6beba95da12bcfcb5a0b4971026fab710c \
 # PostgreSQL
 get_src 62c9e970a474be4b343b1186fa2c3e6c575e07ff17a3fb9df335f90bc6301472 \
         "https://github.com/openresty/ngx_postgres/archive/$NGINX_POSTGRES_VERSION.tar.gz"
+
+# NginxStomp
+get_src c017fc1e6085d9a3bbf06a9bb881fc61c765db194841c8bfdb3224c70ea6860f \
+        "https://github.com/Taymindis/ngx-stomp/archive/$NGINX_STOMP_VERSION.tar.gz"
 
 # improve compilation times
 CORES=$(($(grep -c ^processor /proc/cpuinfo) - 0))
@@ -516,7 +521,8 @@ WITH_MODULES="--add-module=$BUILD_PATH/ngx_devel_kit-$NDK_VERSION \
   --add-dynamic-module=$BUILD_PATH/ngx_http_geoip2_module-${GEOIP2_VERSION} \
   --add-module=$BUILD_PATH/nginx_ajp_module-${NGINX_AJP_VERSION} \
   --add-module=$BUILD_PATH/ngx_brotli \
-  --add-module=$BUILD_PATH/ngx_postgres-$NGINX_POSTGRES_VERSION"
+  --add-module=$BUILD_PATH/ngx_postgres-$NGINX_POSTGRES_VERSION \
+  --add-module=$BUILD_PATH/ngx-stomp-${NGINX_STOMP_VERSION}"
 
 ./configure \
   --prefix=/usr/local/nginx \

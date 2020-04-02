@@ -48,6 +48,7 @@ RUN apk add -U --no-cache \
     dumb-init \
     nano \
     tzdata \
+    postgresql-dev \
   && ln -s /usr/local/nginx/sbin/nginx /sbin/nginx \
   && ln -s /usr/local/lib/mimalloc-1.2/libmimalloc.so /usr/local/lib/libmimalloc.so \
   && addgroup -Sg 101 www-data \

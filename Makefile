@@ -61,9 +61,9 @@ ifeq ($(ARCH),)
     $(error mandatory variable ARCH is empty, either set it when calling the command or make sure 'go env GOARCH' works)
 endif
 
-REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
+REGISTRY ?= sinceqq/ingress-nginx
 
-BASE_IMAGE ?= docker.pkg.github.com/postageapp/ingress-nginx/nginx-amd64
+BASE_IMAGE ?= sinceqq/nginx-amd64
 BASE_TAG ?= 0.99c
 
 GOARCH=$(ARCH)

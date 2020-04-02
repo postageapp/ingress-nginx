@@ -18,8 +18,8 @@
 SHELL=/bin/bash -o pipefail
 
 # 0.0.0 shouldn't clobber any released builds
-TAG ?= 0.99
-REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
+TAG ?= 0.99c
+REGISTRY ?= sinceqq/ingress-nginx
 
 IMGNAME = nginx
 IMAGE = $(REGISTRY)/$(IMGNAME)

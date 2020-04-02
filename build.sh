@@ -8,6 +8,6 @@ docker buildx use ingress-nginx --default --global
 # disable docker in docker tasks
 
 echo "Building NGINX image..."
-ARCH=amd64 make build
+ARCH=amd64 make build container
 # push
 # ARCH=arm64 make build container push

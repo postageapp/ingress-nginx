@@ -13,9 +13,9 @@
 # limitations under the License.
 
 TAG ?=v$(shell date +%m%d%Y)-$(shell git rev-parse --short HEAD)
-REGISTRY ?= docker.pkg.github.com/postageapp/ingress-nginx
+REGISTRY ?= sinceqq/nginx-amd64-e2e
 
-IMAGE = $(REGISTRY)/amd64-e2e-0.99c
+IMAGE = $(REGISTRY)
 
 all: docker-build docker-push
 
