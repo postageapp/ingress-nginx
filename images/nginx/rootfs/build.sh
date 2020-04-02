@@ -580,7 +580,7 @@ luarocks install lua-resty-iputils 0.3.0-1
 luarocks install lua-resty-lrucache 0.09-2
 luarocks install lua-resty-lock 0.08-0
 luarocks install lua-resty-dns 0.21-1
-luarocks install pgmoon-1.11.0-1
+luarocks install pgmoon 1.11.0-1
 
 # required for OCSP verification
 luarocks install lua-resty-http
