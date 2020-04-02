@@ -24,7 +24,7 @@ REGISTRY ?= sinceqq/ingress-nginx
 IMGNAME = nginx
 IMAGE = $(REGISTRY)/$(IMGNAME)
 
-PLATFORMS = linux/amd64 linux/arm64
+PLATFORMS = linux/amd64
 
 EMPTY :=
 SPACE := $(EMPTY) $(EMPTY)

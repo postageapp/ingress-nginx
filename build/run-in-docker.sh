@@ -34,7 +34,7 @@ function cleanup {
 }
 trap cleanup EXIT
 
-E2E_IMAGE=sinceqq/nginx-amd64-e2e:v03252020-e8851e640
+E2E_IMAGE=sinceqq/nginx-amd64-e2e:v04022020-c04b32eb3
 
 DOCKER_OPTS=${DOCKER_OPTS:-}
 
