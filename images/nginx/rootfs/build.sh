@@ -47,7 +47,7 @@ export RESTY_LUAROCKS_VERSION=3.1.3
 export LUAJIT_VERSION=38cb695de87cfeadcba5eeaf57f39e41d529aa1f
 export LUA_RESTY_BALANCER=0.03
 export LUA_RESTY_CORE=0.1.17
-export LUA_CJSON_VERSION=2.1.0.7
+export LUA_CJSON_VERSION=2.1.0.8rc1
 export LUA_RESTY_COOKIE_VERSION=766ad8c15e498850ac77f5e0265f1d3f30dc4027
 export LUA_RESTY_RABBITMQSTOMP=master
 
@@ -212,7 +212,7 @@ get_src 82209d5a5d9545c6dde3db7857f84345db22162fdea9743d5e2b2094d8d407f8 \
 get_src 8f5f76d2689a3f6b0782f0a009c56a65e4c7a4382be86422c9b3549fe95b0dc4 \
         "https://github.com/openresty/lua-resty-core/archive/v$LUA_RESTY_CORE.tar.gz"
 
-get_src 59d2f18ecadba48be61061004c8664eaed1111a3372cd2567cb24c5a47eb41fe \
+get_src 5fbdf0649f8bfccabbcb7f1cfa663819f187697b7570ca7f44dc127e8dfdf446 \
         "https://github.com/openresty/lua-cjson/archive/$LUA_CJSON_VERSION.tar.gz"
 
 get_src f818b5cef0881e5987606f2acda0e491531a0cb0c126d8dca02e2343edf641ef \
